@@ -1,0 +1,24 @@
+{
+  "scenario_id": "S_DEMO_HIGH_RISK_001",
+  "equipment_id": "FORGE_PRESS_A01",
+  "equipment_type": "forging_press",
+  "task_type": "fault_diagnosis",
+  "process_stage": "hot_forging_stroke",
+  "operating_condition": {
+    "temperature_c": 87.5,
+    "pressure_mpa": 27.2,
+    "load_ton": 705.0,
+    "speed_spm": 92.0,
+    "billet_size_mm": 120
+  },
+  "data_modalities": ["vibration", "temperature", "pressure", "load", "process_parameter"],
+  "data_quality_score": 0.78,
+  "label_status": "open_set",
+  "unknown_fault_risk": 0.72,
+  "real_time_requirement": "near_real_time",
+  "available_signal_path": "examples/sample_signal_abnormal.csv",
+  "constraints": {
+    "human_review_required_for_shutdown": true,
+    "no_direct_parameter_change": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "scenario_id": "S_DEMO_LOW_RISK_001",
+  "equipment_id": "FORGE_PRESS_A01",
+  "equipment_type": "forging_press",
+  "task_type": "health_assessment",
+  "process_stage": "normal_production",
+  "operating_condition": {
+    "temperature_c": 55.0,
+    "pressure_mpa": 18.5,
+    "load_ton": 520.0,
+    "speed_spm": 60.0
+  },
+  "data_modalities": ["vibration", "temperature"],
+  "data_quality_score": 0.92,
+  "label_status": "closed_set",
+  "unknown_fault_risk": 0.18,
+  "real_time_requirement": "real_time",
+  "available_signal_path": "examples/sample_signal_normal.csv",
+  "constraints": {
+    "human_review_required_for_shutdown": true,
+    "no_direct_parameter_change": true
+  }
+}

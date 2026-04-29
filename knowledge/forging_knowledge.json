@@ -1,0 +1,69 @@
+[
+  {
+    "source_id": "MANUAL_PRESS_001",
+    "title": "Forging press temperature and hydraulic pressure operating envelope",
+    "source_type": "equipment_manual",
+    "applicable_equipment": ["forging_press", "hydraulic_press"],
+    "tasks": ["fault_diagnosis", "maintenance_recommendation", "health_assessment"],
+    "modalities": ["temperature", "pressure", "load", "process_parameter"],
+    "keywords": ["temperature", "pressure", "hydraulic", "overload", "safe envelope", "forging_press"],
+    "fault_modes": ["hydraulic_pressure_instability", "thermal_overload_risk", "process_parameter_induced_abnormality"],
+    "content": "For forging press operation, high hydraulic pressure combined with high temperature may indicate overload, oil degradation, die misalignment, or cooling insufficiency. Recommendations must not bypass safety interlocks.",
+    "recommended_actions": [
+      "Check hydraulic pressure trend, relief valve status and oil temperature.",
+      "Inspect cooling system and die lubrication condition.",
+      "If pressure and temperature both exceed warning limits, request operator confirmation before continuing production."
+    ],
+    "safety_notes": ["Do not directly modify pressure parameters without human approval."]
+  },
+  {
+    "source_id": "FMEA_GUIDE_002",
+    "title": "FMEA cases for impact-like vibration in forging equipment",
+    "source_type": "FMEA",
+    "applicable_equipment": ["forging_press", "mechanical_press"],
+    "tasks": ["fault_diagnosis", "anomaly_detection"],
+    "modalities": ["vibration", "temperature"],
+    "keywords": ["impact", "vibration", "crest_factor", "kurtosis", "bearing", "guide", "die", "looseness"],
+    "fault_modes": ["impact_or_bearing_defect_suspected", "bearing_or_guiding_system_fault"],
+    "content": "High crest factor or high impulsive vibration can be associated with bearing defect, guide rail wear, die looseness, eccentric loading, or mechanical impact during forging stroke.",
+    "recommended_actions": [
+      "Inspect bearing, guide rail clearance and die fastening condition.",
+      "Compare vibration waveform across multiple strokes to exclude transient process impact.",
+      "Increase sampling frequency if impulsive events are aliased."
+    ],
+    "safety_notes": ["If abnormal impact increases rapidly, stop feeding and request manual inspection."]
+  },
+  {
+    "source_id": "CASE_OPENSET_003",
+    "title": "Historical case: unknown fault under changed billet and speed condition",
+    "source_type": "historical_case",
+    "applicable_equipment": ["forging_press"],
+    "tasks": ["unknown_fault_detection", "domain_adaptation", "fault_diagnosis"],
+    "modalities": ["vibration", "pressure", "temperature"],
+    "keywords": ["unknown", "open_set", "domain_shift", "speed", "billet", "manual_review", "opda", "universal_da"],
+    "fault_modes": ["unknown_or_open_set_fault", "process_parameter_induced_abnormality"],
+    "content": "When billet size and stroke speed changed together, a previous closed-set diagnostic model misclassified an unknown coupling fault as a known bearing fault. Multi-model comparison and manual review reduced maintenance risk.",
+    "recommended_actions": [
+      "Use an unknown-aware model and compare with a process-rule model.",
+      "Trigger human review if unknown score remains high after digital-twin validation.",
+      "Add the confirmed case to the knowledge base and update the model profile."
+    ],
+    "safety_notes": ["Unknown faults should not be handled by automatic parameter change."]
+  },
+  {
+    "source_id": "ALGO_PROFILE_NOTE_004",
+    "title": "Algorithm profile note for model orchestration",
+    "source_type": "algorithm_profile",
+    "applicable_equipment": ["forging_press", "bearing_test_rig"],
+    "tasks": ["fault_diagnosis", "domain_adaptation", "maintenance_recommendation"],
+    "modalities": ["vibration", "temperature", "pressure"],
+    "keywords": ["model", "orchestration", "open_set", "partial_da", "closed_set", "unknown_score", "reliability"],
+    "fault_modes": ["unknown_or_open_set_fault", "known_condition_normal_or_minor_fault"],
+    "content": "For low-risk closed-set tasks, one reliable low-latency model can be used. For open-set, partial label or high-risk tasks, complementary models should be called and output consistency should be checked.",
+    "recommended_actions": [
+      "Use multi-model consistency checking for high-risk or unknown-risk scenarios.",
+      "Attach model version, confidence, unknown score and knowledge source to every maintenance suggestion."
+    ],
+    "safety_notes": ["The agent must not directly generate a diagnosis without invoking the model pool."]
+  }
+]
